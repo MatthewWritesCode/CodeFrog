@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Display help text
+display_help() {
+  echo "Usage: $0 <template> <project_name>"
+  echo "Create a coding playground project based on a template."
+  echo ""
+  echo "Arguments:"
+  echo "  <template>      Specify the template language (e.g., c, cpp, python)."
+  echo "  <project_name>  Specify the name of the project folder to be created."
+}
+
+# Display available templates
+display_templates() {
+  echo "Available templates:"
+  for template_dir in templates/*; do
+    template_name=$(basename "$template_dir")
+    echo "  $template_name"
+  done
+}
+
+# Check if no arguments are provided
+if [ "$#" -eq 0 ]; then
+  display_templates
+  exit 0
+fi
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 2 ]; then
+  display_help
+  exit 1
+fi
+
+# Get the template and project name from command line arguments
+template=$1
+project_name=$2
+
+# Function to create files based on the selected template
+create_files() {
+  local template=$1
+  local project_name=$(find "templates" -type d -name "$template" -print -quit)
+
+  if [ -z "$project_name" ]; then
+    echo "Template folder not found for template: $template"
+    exit 1
+  fi
+
+  cp -r "$project_name"/* .
+}
+
+# Create files based on the selected template
+create_files "$template"
+
+echo "Project created successfully. Enjoy coding!"
