@@ -2,11 +2,15 @@ CC = gcc
 CFLAGS = -Wall -Wextra -pedantic
 LDFLAGS =
 
-main: main.c
+SRCS = $(wildcard *.c) $(wildcard *.cpp)
+
+PROG = main
+
+$(PROG): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
-all: main
+all: $(PROG)
 	@
 
 clean:
-	rm -f main
+	rm -f $(PROG)
