@@ -11,6 +11,7 @@ display_help() {
   echo "Arguments:"
   echo "  <template>      Specify the template language (e.g., c, cpp, python, rust)."
   echo "  <project_name>  Specify the name of the project folder to be created."
+  display_templates
 }
 
 # Display available templates
@@ -21,12 +22,6 @@ display_templates() {
     echo "  $template_name"
   done
 }
-
-# Check if no arguments are provided
-if [ "$#" -eq 0 ]; then
-  display_templates
-  exit 0
-fi
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 2 ]; then
