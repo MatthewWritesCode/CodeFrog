@@ -36,7 +36,7 @@ project_name=$2
 # Function to create files based on the selected template
 create_files() {
   local template_name=$1
-  local template_path=$(find "$SCRIPT_DIR/templates" -type d -name "$template_name" -print -quit)
+  local template_path=$(find "$SCRIPT_DIR/templates" -type d -name "$template_name" -print -quit -maxdepth 1)
   local project_name=$2
 
   if [ -z "$template_path" ]; then
