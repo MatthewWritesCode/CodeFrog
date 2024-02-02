@@ -6,7 +6,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Display help text
 display_help() {
   echo "Usage: $(basename $0) <template> <project_name>"
-  echo "Create a coding playground project based on a template."
+  echo "Create a new coding project based on a template."
   echo ""
   echo "Arguments:"
   echo "  <template>      Specify the template language (e.g., c, cpp, python, rust)."
